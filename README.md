@@ -1,16 +1,24 @@
-# dakhir
+# سَعِي (Sa'i)
 
-A new Flutter project.
+**Your Islamic Daily Habits Tracker**
 
-## Getting Started
+## Overview
 
-This project is a starting point for a Flutter application.
+**سَعِي (Sa'i)** is an Islamic daily habits tracker designed to help you build and maintain good habits that align with Islamic principles. Whether it's daily prayers, reading the Quran, or other personal goals, **سَعِي** helps you stay consistent and focused on your spiritual journey.
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Track Daily Islamic Habits:** Keep track of your daily prayers (Salah), Quran reading, and other personal spiritual goals.
+- **Streaks:** Visualize your progress with streaks that motivate you to stay consistent with your habits.
+- **Arabic and English Support:** The app is available in both Arabic and English, making it accessible to a wide range of users.
+- **Elegant Design:** A clean, user-friendly interface that makes it easy to track and manage your daily habits.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## How to Use
+
+1. **Add a Habit:** Start by adding a new habit that you want to track, such as daily prayers or Quran reading.
+2. **Mark Habits as Completed:** Each day, mark the habits you've completed. The app will automatically track your streaks.
+3. **View Streaks:** Keep an eye on your streaks to stay motivated and consistent in your habits.
+
+## License
+
+This project is licensed under the MIT License.
