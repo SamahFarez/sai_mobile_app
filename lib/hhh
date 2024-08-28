@@ -1,0 +1,124 @@
+void _showAddTaskDialog() {
+    String taskName = '';
+    DateTime dueDate = DateTime.now();
+    List<int> selectedDays =
+        List.generate(7, (index) => index); // Default to all days
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Center(
+            child: const Text('إضافة مهمة'), // "Add Task" in Arabic
+          ),
+          content: Directionality(
+            textDirection: TextDirection.rtl, // Apply RTL direction
+            child: StatefulBuilder(
+              builder: (context, setState) {
+                return SizedBox(
+                  width: double
+                      .maxFinite, // Ensures the dialog width is constrained
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextField(
+                        decoration: const InputDecoration(
+                          labelText: 'اسم المهمة', // "Task Name" in Arabic
+                        ),
+                        onChanged: (value) {
+                          taskName = value;
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      // Add a row of checkboxes for days of the week
+                      Wrap(
+                        spacing: 2.0, // Space between checkboxes
+                        runSpacing: 4.0, // Space between rows of checkboxes
+                        children: List.generate(7, (index) {
+                          final dayNames = [
+                            'الاثنين', // Monday
+                            'الثلاثاء', // Tuesday
+                            'الأربعاء', // Wednesday
+                            'الخميس', // Thursday
+                            'الجمعة', // Friday
+                            'السبت', // Saturday
+                            'الأحد' // Sunday
+                          ];
+                          final isSelected = selectedDays.contains(index);
+                          print(
+                              'Day index: $index, IsSelected: $isSelected'); // Debugging
+
+                          return ChoiceChip(
+                            label: Text(dayNames[index]),
+                            selected: isSelected,
+                            onSelected: (selected) {
+                              setState(() {
+                                if (selected) {
+                                  if (!selectedDays.contains(index)) {
+                                    selectedDays.add(index);
+                                  }
+                                } else {
+                                  selectedDays.remove(index);
+                                }
+                                print(
+                                    'Selected Days: $selectedDays'); // Debugging
+                              });
+                            },
+                            selectedColor:
+                                const Color(0xFF9E7C6F), // Selected color
+                            backgroundColor:
+                                Colors.grey[200], // Unselected color
+                          );
+                        }),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text('إلغاء'), // "Cancel" in Arabic
+                      style: TextButton.styleFrom(
+                        backgroundColor:
+                            const Color(0xFF9E7C6F), // Brown background
+                        primary: Colors.white, // Text color
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8.0), // Small space between buttons
+                  Expanded(
+                    child: TextButton(
+                      onPressed: () {
+                        if (taskName.isNotEmpty) {
+                          _addTask(taskName, dueDate,
+                              selectedDays); // Call to add task with selected days
+                          Navigator.of(context).pop();
+                        }
+                      },
+                      child: const Text('إضافة'), // "Add" in Arabic
+                      style: TextButton.styleFrom(
+                        backgroundColor:
+                            const Color(0xFF9E7C6F), // Brown background
+                        primary: Colors.white, // Text color
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
